@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Airavata Photography</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+    header { background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95)); backdrop-filter: blur(10px); padding: 20px 40px; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.5); animation: slideDown 0.6s ease-out; }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+    .logo-title-wrapper { display: flex; align-items: center; gap: 15px; }
+    .logo-title-wrapper img { height: 55px; border-radius: 50%; border: 3px solid #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); transition: transform 0.3s ease; }
+    .logo-title-wrapper img:hover { transform: scale(1.1) rotate(5deg); }
+    .logo-title-wrapper h2 { font-size: 24px; background: linear-gradient(135deg, #d4af37, #f4e4b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: 1px; }
+    nav { display: flex; gap: 35px; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; position: relative; transition: color 0.3s ease; padding: 5px 0; }
+    nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #d4af37, #f4e4b0); transition: width 0.3s ease; }
+    nav a:hover, nav a.active { color: #d4af37; }
+    nav a:hover::after, nav a.active::after { width: 100%; }
+    .page-hero { margin-top: 95px; padding: 80px 20px; text-align: center; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); position: relative; }
+    .page-hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+    .page-hero h1 { font-size: 56px; font-weight: 800; background: linear-gradient(135deg, #fff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; animation: fadeInUp 0.8s ease-out; }
+    .page-hero p { font-size: 20px; opacity: 0.8; animation: fadeInUp 0.8s ease-out 0.2s both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .services-container { max-width: 1400px; margin: 0 auto; padding: 80px 40px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+    .service-card { background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s ease; position: relative; animation: fadeInUp 0.6s ease-out both; }
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .service-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
+    .service-image { width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease; }
+    .service-card:hover .service-image { transform: scale(1.05); }
+    .service-content { padding: 30px; text-align: center; }
+    .service-content h3 { font-size: 28px; margin-bottom: 15px; color: #d4af37; font-weight: 700; }
+    .service-content p { opacity: 0.85; line-height: 1.7; margin-bottom: 25px; font-size: 16px; }
+    .book-now-link { background: linear-gradient(135deg, #d4af37, #f4e4b0); color: #000; padding: 14px 40px; border-radius: 50px; font-size: 16px; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); width: 75%; text-align: center; }
+    .book-now-link:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5); background: linear-gradient(135deg, #f4e4b0, #d4af37); color: #000; }
+    .booking-section { max-width: 800px; margin: 80px auto; padding: 40px; background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); }
+    .booking-section h2 { font-size: 36px; background: linear-gradient(135deg, #d4af37, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 30px; text-align: center; }
+    .form-group { margin-bottom: 25px; }
+    .form-label { color: #d4af37; font-weight: 600; margin-bottom: 10px; display: block; font-size: 16px; }
+    .form-control { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); color: #d4af37; padding: 14px 18px; border-radius: 10px; width: 100%; font-size: 16px; transition: all 0.3s ease; }
+    .form-control:focus { background: rgba(255, 255, 255, 0.08); border-color: #d4af37; outline: none; box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15); }
+    .form-control::placeholder { color: rgba(255, 255, 255, 0.4); }
+    .submit-btn { background: linear-gradient(135deg, #d4af37, #f4e4b0); border: none; color: #000; font-weight: 700; padding: 16px; border-radius: 10px; width: 100%; font-size: 18px; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); }
+    .book-now-link { display: none !important; }
+    footer { background: linear-gradient(135deg, #0a0a0a, #000); text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 175, 55, 0.3); margin-top: 60px; }
+    footer p { opacity: 0.7; font-size: 16px; }
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; gap: 20px; }
+      nav { gap: 20px; }
+      .page-hero h1 { font-size: 36px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-container { padding: 60px 20px; }
+      .booking-section { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-title-wrapper">
+        <img src="images/logo.jpg" alt="Airavata Photography Logo" />
+        <h2>Airavata Photography</h2>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-hero">
+    <h1>Our Services</h1>
+    <p>Professional photography for your most precious moments</p>
+  </div>
+  <div class="services-container">
+    <div class="services-grid">
+      <!-- Wedding Events -->
+      <div class="service-card">
+  <a href="wedding-gallery.html" style="text-decoration:none; color:inherit;">
+    <img src="images/photo1.jpg" alt="Wedding Events" class="service-image" />
+    <div class="service-content">
+      <h3>Wedding Events</h3>
+      <p>Capture your special day with elegance and style. Professional wedding photography tailored to your needs.</p>
+    </div>
+  </a>
+  <a href="#booking" class="book-now-link">Book Now</a>
+</div>
+      <!-- Birthday Events -->
+      <div class="service-card">
+  <a href="birthday-gallery.html" style="text-decoration:none; color:inherit;">
+    <img src="images/photo2.jpg" alt="Birthday Events" class="service-image" />
+    <div class="service-content">
+      <h3>Birthday Events</h3>
+      <p>Make every birthday memorable with professional, candid photos that capture the fun and joy.</p>
+    </div>
+  </a>
+  <a href="#booking" class="book-now-link">Book Now</a>
+
+      </div>
+      <!-- pre-wedding Events -->
+    <div class="service-card">
+  <a href="prewedding-gallery.html" style="text-decoration:none; color:inherit;">
+    <img src="images/photo3.jpg" alt="pre-wedding Events" class="service-image" />
+    <div class="service-content">
+      <h3>pre-wedding Events</h3>
+      <p>Capture the love, emotions, and moments before your big day with our beautifully crafted pre-wedding photography.</p>
+    </div>
+  </a>
+  <a href="#booking" class="book-now-link">Book Now</a>
+</div>
+      </div>
+    </div>
+  </div>
+  <div id="booking" class="booking-section">
+    <h2>Book Your Photography Session</h2>
+    <form action="https://formspree.io/f/mqayqvwe" method="POST">
+      <div class="form-group">
+        <label class="form-label">Full Name *</label>
+        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address *</label>
+        <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" name="phone" placeholder="Your phone number">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Type *</label>
+        <select class="form-control" name="service" required>
+          <option value="">Select a service</option>
+          <option value="Wedding Events">Wedding Events</option>
+          <option value="Birthday Events">Birthday Events</option>
+          <option value="">pre-wedding Events</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Event Date *</label>
+        <input type="date" class="form-control" name="event_date" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Additional Details</label>
+        <textarea class="form-control" name="message" rows="4" placeholder="Tell us more about your event..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Booking Request</button>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2025 Airavata Photography | All Rights Reserved</p>
+  </footer>
+  
+</body>
+</html>
