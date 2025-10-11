@@ -23,12 +23,11 @@
     .banner-image-section { position: relative; margin-top: 95px; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .banner-image-section img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 
-    /* Updated: move phone number to bottom center */
+    /* Phone number in bottom right corner */
     .banner-mobile-number {
       position: absolute;
       bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 24px;
       z-index: 3;
       background: rgba(26, 26, 26, 0.6);
       color: #d4af37;
@@ -76,8 +75,7 @@
       nav { gap: 20px; }
       .banner-mobile-number {
         bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 16px;
         padding: 3px 10px;
         font-size: 0.82rem;
       }
@@ -104,7 +102,7 @@
   </header>
 
   <section class="banner-image-section">
-    <!-- Mobile number moved to bottom center -->
+    <!-- Phone number in bottom right corner -->
     <div class="banner-mobile-number">
       call 8919774117
     </div>
