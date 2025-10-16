@@ -6,322 +6,66 @@
   <title>Airavata Photography</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      overflow-x: hidden;
-    }
-    header {
-      background: transparent;
-      padding: 20px 40px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: none;
-      border: none;
-      animation: slideDown 0.6s ease-out;
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .logo-title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .logo-title-wrapper img {
-      height: 55px;
-      border-radius: 50%;
-      border: 3px solid #d4af37;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      transition: transform 0.3s ease;
-    }
-    .logo-title-wrapper img:hover {
-      transform: scale(1.1) rotate(5deg);
-    }
-    .logo-title-wrapper h2 {
-      font-size: 24px;
-      background: linear-gradient(135deg, #d4af37, #f4e4b0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin: 0;
-      /* No white or solid text fill here */
-    }
-    nav {
-      display: flex;
-      gap: 35px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      position: relative;
-      transition: color 0.3s ease;
-      padding: 5px 0;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #d4af37, #f4e4b0);
-      transition: width 0.3s ease;
-    }
-    nav a:hover {
-      color: #d4af37;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+    header { background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95)); backdrop-filter: blur(10px); padding: 20px 40px; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.5); animation: slideDown 0.6s ease-out; }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+    .logo-title-wrapper { display: flex; align-items: center; gap: 15px; }
+    .logo-title-wrapper img { height: 55px; border-radius: 50%; border: 3px solid #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); transition: transform 0.3s ease; }
+    .logo-title-wrapper img:hover { transform: scale(1.1) rotate(5deg); }
+    .logo-title-wrapper h2 { font-size: 24px; background: linear-gradient(135deg, #d4af37, #f4e4b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: 1px; }
+    nav { display: flex; gap: 35px; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; position: relative; transition: color 0.3s ease; padding: 5px 0; }
+    nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #d4af37, #f4e4b0); transition: width 0.3s ease; }
+    nav a:hover { color: #d4af37; }
+    nav a:hover::after { width: 100%; }
 
-    .banner-image-section {
-      position: relative;
-      margin-top: 95px;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .banner-image-section img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-    .banner-mobile-number {
-      position: absolute;
-      bottom: 20px;
-      right: 24px;
-      z-index: 3;
-      background: rgba(26, 26, 26, 0.6);
-      color: #d4af37;
-      padding: 4px 16px;
-      border-radius: 15px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.07);
-      border: 1px solid #d4af37;
-      opacity: 0.97;
-      transition: background 0.3s;
-    }
-    .banner-overlay {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: 0 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .banner-overlay h1 {
-      font-size: 4vw;
-      font-family: 'Times New Roman', Times, serif;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      margin-bottom: 10px;
-      line-height: 1.07;
-      white-space: nowrap;
-      border-right: .12em solid #fff;
-      overflow: hidden;
-      animation:
-        typing 2.2s steps(27, end),
-        blink-caret .8s step-end infinite;
-      background: none;
-      box-shadow: none;
-      text-shadow: none;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #fff; }
-    }
-    .banner-overlay .subtext {
-      font-size: 1.15rem;
-      font-family: 'Montserrat', sans-serif;
-      color: #eee;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      margin-bottom: 16px;
-      opacity: 0.94;
-      line-height: 1.2;
-      white-space: nowrap;
-      animation: fadeInUp 1.1s 2.2s both;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(12px);}
-      to { opacity: 1; transform: none;}
-    }
-    .book-btn {
-      background: linear-gradient(135deg, #d4af37, #f4e4b0);
-      color: #000;
-      padding: 18px 45px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-      transition: all 0.3s ease;
-      animation: fadeInUp 1s ease-out 0.6s both;
-      position: relative;
-      z-index: 1;
-    }
-    .book-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
-    }
+    .banner-image-section { position: relative; margin-top: 95px; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .banner-image-section img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 
-    .welcome-section {
-      padding: 100px 40px;
-      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
-      text-align: center;
-      position: relative;
-    }
-    .welcome-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    }
-    .welcome-section h2 {
-      font-size: 48px;
-      margin-bottom: 30px;
-      background: linear-gradient(135deg, #fff, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .welcome-section p {
-      font-size: 20px;
-      line-height: 1.8;
-      max-width: 900px;
-      margin: 0 auto;
-      opacity: 0.85;
-    }
-    .services-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      max-width: 1400px;
-      margin: 80px auto 0;
-      padding: 0 40px;
-    }
-    .service-card {
-      background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .service-card:hover::before {
-      opacity: 1;
-    }
-    .service-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(212, 175, 55, 0.6);
-      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
-    }
-    .service-icon {
-      font-size: 60px;
-      margin-bottom: 20px;
-    }
-    .service-card h3 {
-      font-size: 26px;
-      margin-bottom: 15px;
-      color: #d4af37;
-    }
-    .service-card p {
-      opacity: 0.8;
-      line-height: 1.6;
-    }
+    /* Small mobile number styling on banner */
+  
+    .banner-overlay { position: relative; z-index: 2; text-align: center; padding: 60px 20px; max-width: 900px; margin: 0 20px; }
+    .banner-overlay h1 { font-size: 72px; font-weight: 700; margin-bottom: 20px; color: #ffffff; animation: fadeInUp 1s ease-out; position: relative; z-index: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
+    .banner-overlay p { font-size: 24px; margin-bottom: 35px; opacity: 0.9; animation: fadeInUp 1s ease-out 0.3s both; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; color: #000000; }
 
-    footer {
-      background: linear-gradient(135deg, #0a0a0a, #000);
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid rgba(212, 175, 55, 0.3);
-    }
-    footer p {
-      opacity: 0.7;
-      font-size: 16px;
-    }
+    .hero { background: linear-gradient(135deg, rgba(10,10,10,0.8), rgba(30,30,30,0.6)), url('banner.jpg') no-repeat center center/cover; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%); animation: pulse 4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+    .hero h1 { font-size: 72px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInUp 1s ease-out; position: relative; z-index: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .hero p { font-size: 24px; margin-bottom: 35px; opacity: 0.9; animation: fadeInUp 1s ease-out 0.3s both; position: relative; z-index: 1; max-width: 700px; line-height: 1.6; }
+    .book-btn { background: linear-gradient(135deg, #d4af37, #f4e4b0); color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-size: 20px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); transition: all 0.3s ease; animation: fadeInUp 1s ease-out 0.6s both; position: relative; z-index: 1; }
+    .book-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6); }
+    .welcome-section { padding: 100px 40px; background: linear-gradient(180deg, #0a0a0a, #1a1a1a); text-align: center; position: relative; }
+    .welcome-section::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+    .welcome-section h2 { font-size: 48px; margin-bottom: 30px; background: linear-gradient(135deg, #fff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .welcome-section p { font-size: 20px; line-height: 1.8; max-width: 900px; margin: 0 auto; opacity: 0.85; }
+    .services-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1400px; margin: 80px auto 0; padding: 0 40px; }
+    .service-card { background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; padding: 40px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
+    .service-icon { font-size: 60px; margin-bottom: 20px; }
+    .service-card h3 { font-size: 26px; margin-bottom: 15px; color: #d4af37; }
+    .service-card p { opacity: 0.8; line-height: 1.6; }
 
+    footer { background: linear-gradient(135deg, #0a0a0a, #000); text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 175, 55, 0.3); }
+    footer p { opacity: 0.7; font-size: 16px; }
 
     @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-      nav {
-        gap: 20px;
-      }
+      .header-content { flex-direction: column; gap: 20px; }
+      nav { gap: 20px; }
       .banner-mobile-number {
-        bottom: 10px;
-        right: 16px;
+        top: 8px;
+        left: 8px;
         padding: 3px 10px;
         font-size: 0.82rem;
       }
-      .banner-overlay h1 {
-        font-size: 32px;
-      }
-      .banner-overlay .subtext {
-        font-size: 0.85rem;
-      }
-      .welcome-section h2 {
-        font-size: 36px;
-      }
-      .services-preview {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-      }
+      .banner-overlay h1 { font-size: 42px; }
+      .banner-overlay p { font-size: 18px; }
+      .welcome-section h2 { font-size: 36px; }
+      .services-preview { grid-template-columns: 1fr; padding: 0 20px; }
     }
   </style>
 </head>
@@ -338,20 +82,22 @@
         <a href="contact.html">Contact</a>
       </nav>
     </div>
+    <head>
+  <link rel="stylesheet" href="styles.css">
   </header>
+
   <section class="banner-image-section">
-    <div class="banner-mobile-number">
-      call 8919774117
-    </div>
+ 
     <img src="banner.jpg" alt="Professional Photography Showcase" />
     <div class="banner-overlay">
-      <h1>CAPTURE YOUR SPECIAL MOMENTS</h1>
-      <div class="subtext">Where every frame tells a story</div>
+      <h1>Capture Your Special Moments</h1>
+      
       <a href="services.html" class="book-btn">
         <span>📸</span> Book Your Session
       </a>
     </div>
   </section>
+
   <section class="welcome-section">
     <h2>Welcome to Airavata Photography</h2>
     <p>
@@ -367,8 +113,8 @@
       </div>
       <div class="service-card">
         <div class="service-icon">🎉</div>
-        <h3>Pre-wedding Shoot</h3>
-        <p>Capture the love, emotions, and moments before your big day with our beautifully crafted pre-wedding photography</p>
+        <h3>Event Management</h3>
+        <p>Comprehensive coverage of corporate events, parties, and special occasions</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🎂</div>
@@ -377,6 +123,7 @@
       </div>
     </div>
   </section>
+
   <footer>
     <p>&copy; 2025 Airavata Photography | All Rights Reserved</p>
   </footer>
