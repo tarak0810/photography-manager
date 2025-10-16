@@ -20,49 +20,268 @@
     nav a:hover { color: #d4af37; }
     nav a:hover::after { width: 100%; }
 
-    .banner-image-section { position: relative; margin-top: 95px; min-height: 85vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .banner-image-section img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    /* Banner/Slider Styles */
+    .banner-image-section {
+      position: relative;
+      margin-top: 95px;
+      min-height: 85vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .slider {
+      position: absolute;
+      width: 100vw;
+      height: 100%;
+      left: 0; top: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slider-image {
+      position: absolute;
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+      left: 0; top: 0;
+    }
+    .slider-image.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    /* Banner overlay content centering */
+    .banner-overlay {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      margin: 0 auto;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .banner-overlay h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px; /* smaller, elegant size */
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 6px; /* balanced spacing */
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1.5s ease-out;
+      position: relative;
+      z-index: 3;
+      margin: 0;
+    }
 
-    /* Small mobile number styling on banner */
-  
-    .banner-overlay { position: relative; z-index: 2; text-align: center; padding: 60px 20px; max-width: 900px; margin: 0 20px; }
-    .banner-overlay h1 { font-size: 72px; font-weight: 700; margin-bottom: 20px; color: #ffffff; animation: fadeInUp 1s ease-out; position: relative; z-index: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
-    .banner-overlay p { font-size: 24px; margin-bottom: 35px; opacity: 0.9; animation: fadeInUp 1s ease-out 0.3s both; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; color: #000000; }
+    .book-btn {
+      font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #d4af37, #f4e4b0);
+  color: #000;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  margin-top: 60px; /* <-- Increase for more spacing below heading */
+}
 
-    .hero { background: linear-gradient(135deg, rgba(10,10,10,0.8), rgba(30,30,30,0.6)), url('banner.jpg') no-repeat center center/cover; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 20px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%); animation: pulse 4s ease-in-out infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-    .hero h1 { font-size: 72px; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInUp 1s ease-out; position: relative; z-index: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .hero p { font-size: 24px; margin-bottom: 35px; opacity: 0.9; animation: fadeInUp 1s ease-out 0.3s both; position: relative; z-index: 1; max-width: 700px; line-height: 1.6; }
-    .book-btn { background: linear-gradient(135deg, #d4af37, #f4e4b0); color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-size: 20px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); transition: all 0.3s ease; animation: fadeInUp 1s ease-out 0.6s both; position: relative; z-index: 1; }
-    .book-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6); }
-    .welcome-section { padding: 100px 40px; background: linear-gradient(180deg, #0a0a0a, #1a1a1a); text-align: center; position: relative; }
-    .welcome-section::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
-    .welcome-section h2 { font-size: 48px; margin-bottom: 30px; background: linear-gradient(135deg, #fff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .welcome-section p { font-size: 20px; line-height: 1.8; max-width: 900px; margin: 0 auto; opacity: 0.85; }
-    .services-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1400px; margin: 80px auto 0; padding: 0 40px; }
-    .service-card { background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; padding: 40px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s ease; position: relative; overflow: hidden; }
-    .service-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%); opacity: 0; transition: opacity 0.4s ease; }
-    .service-card:hover::before { opacity: 1; }
-    .service-card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.6); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
-    .service-icon { font-size: 60px; margin-bottom: 20px; }
-    .service-card h3 { font-size: 26px; margin-bottom: 15px; color: #d4af37; }
-    .service-card p { opacity: 0.8; line-height: 1.6; }
+    .book-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+    }
 
-    footer { background: linear-gradient(135deg, #0a0a0a, #000); text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 175, 55, 0.3); }
-    footer p { opacity: 0.7; font-size: 16px; }
 
+    /* Sinking Dots */
+    .slider-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      display: flex;
+      gap: 7px;
+      transform: translateX(-50%);
+      z-index: 20;
+      pointer-events: auto;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid #d4af37;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      transition: transform 0.5s cubic-bezier(.48,2.02,.37,.81), background 0.3s, border 0.3s;
+      cursor: pointer;
+    }
+    .dot.active {
+      background: #d4af37;
+      transform: scale(1.3) translateY(3px);
+      box-shadow: 0 2px 6px rgba(212,175,55,0.28);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      padding: 100px 40px;
+      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
+      text-align: center;
+      position: relative;
+    }
+    .welcome-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    }
+    .welcome-section h2 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #fff, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .welcome-section p {
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .services-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 80px auto 0;
+      padding: 0 40px;
+    }
+    .service-card {
+      background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    }
+    .service-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #d4af37;
+    }
+    .service-card p {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #0a0a0a, #000);
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    footer p {
+      opacity: 0.7;
+      font-size: 16px;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp_float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 35px;
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp_float:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-icon {
+      margin-top: 13px;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      .header-content { flex-direction: column; gap: 20px; }
-      nav { gap: 20px; }
-      
-      .banner-overlay h1 { font-size: 42px; }
-      .banner-overlay p { font-size: 18px; }
-      .welcome-section h2 { font-size: 36px; }
-      .services-preview { grid-template-columns: 1fr; padding: 0 20px; }
+      .header-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      nav {
+        gap: 20px;
+      }
+      .banner-overlay h1 {
+        font-size: 42px;
+      }
+      .welcome-section h2 {
+        font-size: 36px;
+      }
+      .services-preview {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+      .slider-image, .slider {
+        height: 330px !important;
+        min-height: 270px !important;
+      }
+      .slider-dots {
+        bottom: 15px;
+      }
     }
   </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header>
@@ -77,21 +296,24 @@
         <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <head>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
   </header>
 
   <section class="banner-image-section">
- 
-    <img src="banner.jpg" alt="Professional Photography Showcase" />
+    <div class="slider">
+      <img src="ba1.jpg" class="slider-image active" alt="Professional Photography 1" />
+      <img src="ba2.jpg" class="slider-image" alt="Professional Photography 2" />
+      <img src="ba3.jpg" class="slider-image" alt="Professional Photography 3" />
+    </div>
     <div class="banner-overlay">
       <h1>Capture Your Special Moments</h1>
-      
       <a href="services.html" class="book-btn">
         <span>📸</span> Book Your Session
       </a>
+    </div>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
   </section>
 
@@ -124,15 +346,52 @@
   <footer>
     <p>&copy; 2025 Airavata Photography | All Rights Reserved</p>
   </footer>
-  <a href="https://wa.me/919133203627" 
-   class="whatsapp_float" 
-   target="_blank" 
-   rel="noopener noreferrer" 
+
+  <a href="https://wa.me/919133203627"
+   class="whatsapp_float"
+   target="_blank"
+   rel="noopener noreferrer"
    title="Chat on WhatsApp">
    <i class="fa fa-whatsapp whatsapp-icon"></i>
-</a>
+  </a>
 
+  <script>
+    const slides = document.querySelectorAll('.slider-image');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let interval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function startSlider() {
+      interval = setInterval(nextSlide, 4000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(interval);
+        currentSlide = i;
+        showSlide(currentSlide);
+        startSlider();
+      });
+    });
+
+    // Initialize slider
+    showSlide(currentSlide);
+    startSlider();
+  </script>
 </body>
 </html>
-
-
