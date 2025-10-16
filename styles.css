@@ -152,45 +152,6 @@
 }
 
 /* Mobile Responsive */
-@media screen and (max-width: 767px) {
-  .slider,
-  .slider-image {
-    width: 100vw;
-    height: 330px !important;
-    min-height: 270px !important;
-  }
-  .banner-overlay h1 {
-    font-size: 24px;
-    letter-spacing: 2px;
-  }
-  .book-btn {
-    font-size: 16px;
-    padding: 13px 28px;
-    margin-top: 15px;
-  }
-  .slider-dots {
-    bottom: 16px;
-    gap: 16px;
-  }
-  .dot {
-    width: 15px;
-    height: 15px;
-    border-width: 2px;
-  }
-  .dot.active {
-    transform: scale(1.05) translateY(5px);
-  }
-  .whatsapp_float {
-    width: 50px;
-    height: 50px;
-    bottom: 25px;
-    right: 20px;
-    font-size: 26px;
-  }
-  .whatsapp-icon {
-    margin-top: 10px;
-  }
-}
 /* Mobile adjustments */
 @media (max-width: 767px) {
   .slider,
@@ -220,4 +181,32 @@
 /* Remove manual <br> spacing below banner title */
 .banner-overlay h1 {
   margin-bottom: 20px; /* use margin instead of <br> tags */
+}
+  .book-btn {
+    font-size: 16px;
+    padding: 13px 28px;
+    margin-top: 15px;
+  }
+  .slider-dots {
+    bottom: 16px;
+    gap: 16px;
+  }
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+  }
+  .dot.active {
+    transform: scale(1.05) translateY(5px);
+  }
+  .whatsapp_float {
+    width: 50px;
+    height: 50px;
+    bottom: 25px;
+    right: 20px;
+    font-size: 26px;
+  }
+  .whatsapp-icon {
+    margin-top: 10px;
+  }
 }
