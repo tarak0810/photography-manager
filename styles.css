@@ -11,3 +11,41 @@
 .banner-overlay h1:hover {
   transform: scale(1.05);
 }
+/* WhatsApp Floating Button */
+.whatsapp_float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp_float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    margin-top: 13px;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 767px) {
+    .whatsapp_float {
+        width: 50px;
+        height: 50px;
+        bottom: 25px;
+        right: 20px;
+        font-size: 26px;
+    }
+    .whatsapp-icon {
+        margin-top: 10px;
+    }
+}
