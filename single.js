@@ -32,4 +32,38 @@ dots.forEach((dot, i) => {
 });
 
 showSlide(currentSlide);
+const slider = document.querySelector('.slider');
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Handle swipe start
+slider.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+// Handle swipe end
+slider.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+}, false);
+
+function handleGesture() {
+  if (touchEndX < touchStartX - 40) {
+    // Swipe left -> next slide
+    clearInterval(interval);
+    nextSlide();
+    startSlider();
+  } else if (touchEndX > touchStartX + 40) {
+    // Swipe right -> previous slide
+    clearInterval(interval);
+    previousSlide();
+    startSlider();
+  }
+}
+
+function previousSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  showSlide(currentSlide);
+}
+
 startSlider();
