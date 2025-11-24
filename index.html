@@ -9,20 +9,19 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
     
-    /* Updated Header Styles */
+    /* Updated Header Styles - Completely Transparent */
     header { 
       background: transparent;
-      backdrop-filter: blur(10px);
       padding: 20px 40px; 
       position: fixed; 
       width: 100%; 
       top: 0; 
       z-index: 1000; 
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
       animation: slideDown 0.6s ease-out; 
     }
     header.scrolled {
-      background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95));
+      background: rgba(10, 10, 10, 0.95);
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -33,7 +32,7 @@
     .logo-title-wrapper img:hover { transform: scale(1.1) rotate(5deg); }
     .logo-title-wrapper h2 { font-size: 24px; background: linear-gradient(135deg, #d4af37, #f4e4b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: 1px; }
     nav { display: flex; gap: 35px; }
-    nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; position: relative; transition: color 0.3s ease; padding: 5px 0; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; position: relative; transition: color 0.3s ease; padding: 5px 0; text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
     nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #d4af37, #f4e4b0); transition: width 0.3s ease; }
     nav a:hover { color: #d4af37; }
     nav a:hover::after { width: 100%; }
@@ -89,10 +88,10 @@
 
     .banner-overlay h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 30px; /* smaller, elegant size */
+      font-size: 30px;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.9);
-      letter-spacing: 6px; /* balanced spacing */
+      letter-spacing: 6px;
       text-transform: uppercase;
       text-align: center;
       text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
@@ -303,7 +302,7 @@
   <header>
     <div class="header-content">
       <div class="logo-title-wrapper">
-        <img src="logo.jpg" alt="Airavata Photography Logo" />
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Airavata Photography Logo" />
         <h2>Airavata Photography</h2>
       </div>
       <nav>
@@ -316,17 +315,17 @@
 
   <section class="banner-image-section">
     <div class="slider">
-      <img src="Slider1.jpg" class="slider-image active" alt="Professional Photography 1" />
-      <img src="Slider2.jpg" class="slider-image" alt="Professional Photography 2" />
-      <img src="Slider3.jpg" class="slider-image" alt="Professional Photography 3" />
-       <img src="Slider4.jpg" class="slider-image" alt="Professional Photography 4" />
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="slider-image active" alt="Professional Photography 1" />
+      <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="slider-image" alt="Professional Photography 2" />
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="slider-image" alt="Professional Photography 3" />
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" class="slider-image" alt="Professional Photography 4" />
     </div>
     <div class="banner-overlay">
       <h1>Capturing Memories</h1>
-     <br>                    </br>
-     <br>                    </br>
-     <br>                    </br>
-     <br>                    </br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <a href="services.html" class="book-btn">
         <span>📸</span> Book Your Session
       </a>
@@ -335,20 +334,22 @@
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
+      <span class="dot"></span>
     </div>
   </section>
-<section class="welcome-section">
+  
+  <section class="welcome-section">
     <h2>Welcome to Airavata Photography</h2>
     <p>
-      Airavata Photography is a dedicated professional studio committed to delivering exceptional visual  content. 
-      We specialize in wedding,portrait,and commercial photography,Cinematography focusing on technical excellence, 
+      Airavata Photography is a dedicated professional studio committed to delivering exceptional visual content. 
+      We specialize in wedding, portrait, and commercial photography, cinematography focusing on technical excellence, 
       artistic composition, and meticulous attention to detail.
     </p>
     <div class="services-preview">
       <div class="service-card">
         <div class="service-icon">💍</div>
         <h3>Wedding Photography</h3>
-        <p>capturing the emotion and moments </p>
+        <p>Capturing the emotion and moments of your special day</p>
       </div>
       <div class="service-card">
         <div class="service-icon">😎</div>
@@ -356,9 +357,9 @@
         <p>Professional Model Photography Services</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">👩‍🦲</div>
-        <h3>Toddler</h3
-         <p>High Energy and Unpredictable Movement</p>
+        <div class="service-icon">👶</div>
+        <h3>Toddler Photography</h3>
+        <p>High Energy and Unpredictable Movement</p>
       </div>
     </div>
   </section>
