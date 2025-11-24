@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,12 +37,12 @@
     nav a:hover { color: #d4af37; }
     nav a:hover::after { width: 100%; }
 
-    /* Banner/Slider Styles */
+    /* Banner/Slider Styles - IMPROVED FOR MOBILE */
     .banner-image-section {
       position: relative;
       margin-top: 0;
       min-height: 100vh;
-      width: 100vw;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,9 +50,10 @@
     }
     .slider {
       position: absolute;
-      width: 100vw;
+      width: 100%;
       height: 100%;
-      left: 0; top: 0;
+      left: 0; 
+      top: 0;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -60,30 +61,34 @@
     }
     .slider-image {
       position: absolute;
-      width: 100vw;
+      width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       z-index: 1;
-      left: 0; top: 0;
+      left: 0; 
+      top: 0;
     }
     .slider-image.active {
       opacity: 1;
       z-index: 2;
     }
+    
     /* Banner overlay content centering */
     .banner-overlay {
       position: relative;
       z-index: 3;
       text-align: center;
       margin: 0 auto;
-      width: 100vw;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      padding: 0 20px;
     }
 
     .banner-overlay h1 {
@@ -266,31 +271,88 @@
       margin-top: 13px;
     }
 
-    /* Responsive Styles */
+    /* Responsive Styles - IMPROVED FOR MOBILE */
     @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
       .header-content {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
       }
       nav {
         gap: 20px;
       }
+      
+      /* Mobile banner improvements */
+      .banner-image-section {
+        min-height: 100vh;
+        height: 100vh;
+      }
+      .slider, .slider-image {
+        height: 100vh !important;
+        min-height: 100vh !important;
+      }
+      .slider-image {
+        object-fit: cover;
+        object-position: center center;
+      }
+      
+      .banner-overlay {
+        padding: 0 15px;
+      }
       .banner-overlay h1 {
-        font-size: 42px;
+        font-size: 24px;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+      }
+      .book-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+      }
+      
+      .slider-dots {
+        bottom: 30px;
+      }
+      
+      .welcome-section {
+        padding: 60px 20px;
       }
       .welcome-section h2 {
         font-size: 36px;
       }
+      .welcome-section p {
+        font-size: 18px;
+      }
       .services-preview {
         grid-template-columns: 1fr;
         padding: 0 20px;
+        gap: 30px;
+        margin-top: 50px;
       }
-      .slider-image, .slider {
-        height: 330px !important;
-        min-height: 270px !important;
+      .service-card {
+        padding: 30px 20px;
+      }
+    }
+    
+    /* Extra small devices */
+    @media (max-width: 480px) {
+      .banner-overlay h1 {
+        font-size: 20px;
+        letter-spacing: 3px;
+      }
+      .book-btn {
+        padding: 10px 20px;
+        font-size: 15px;
       }
       .slider-dots {
-        bottom: 15px;
+        bottom: 25px;
+      }
+      .welcome-section h2 {
+        font-size: 30px;
+      }
+      .welcome-section p {
+        font-size: 16px;
       }
     }
   </style>
@@ -314,11 +376,11 @@
   </header>
 
   <section class="banner-image-section">
-<div class="slider">
+    <div class="slider">
       <img src="Slider1.jpg" class="slider-image active" alt="Professional Photography 1" />
       <img src="Slider2.jpg" class="slider-image" alt="Professional Photography 2" />
       <img src="Slider3.jpg" class="slider-image" alt="Professional Photography 3" />
-       <img src="Slider4.jpg" class="slider-image" alt="Professional Photography 4" />
+      <img src="Slider4.jpg" class="slider-image" alt="Professional Photography 4" />
     </div>
 
     <div class="banner-overlay">
