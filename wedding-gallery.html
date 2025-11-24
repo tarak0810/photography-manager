@@ -1,4 +1,49 @@
-.lightbox-nav {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wedding Gallery - Airavata Photography</title>
+  <style>
+    body { 
+      background: #0a0a0a; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px; max-width: 1200px; margin: auto;
+    }
+    h1 { color: #d4af37; text-align: center; margin-bottom: 20px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .gallery-grid img {
+      width: 100%; height: 200px; object-fit: cover;
+      border-radius: 15px; box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(212,175,55,0.6);
+    }
+    a.back-link {
+      display: block; margin-bottom: 20px; color: #d4af37; text-decoration: none;
+      font-weight: 600;
+    }
+    a.back-link:hover { text-decoration: underline; }
+    /* Lightbox styles */
+    .lightbox {
+      display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 1000;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img {
+      max-width: 90vw; max-height: 90vh; border-radius: 18px;
+      background: #222;
+      box-shadow: 0 8px 36px rgba(212,175,55,0.45);
+      animation: fadein 0.25s;
+    }
+    .lightbox-close {
+      position: absolute; top: 40px; right: 60px; font-size: 3rem; color: #d4af37;
+      background: none; border: none; cursor: pointer; z-index: 1001;
+      font-family: system-ui, sans-serif;
+    }
+ .lightbox-nav {
   position: absolute; 
   top: 50%; 
   transform: translateY(-50%);
@@ -21,3 +66,85 @@
   .prev-btn { left:5px; }
   .next-btn { right:5px; }
 }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: scale(0.95);}
+      to   { opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <a href="services.html" class="back-link">&larr; Back to Services</a>
+  <h1>Wedding Gallery</h1>
+  <div class="gallery-grid">
+    <img src="w1.jpg" alt="Wedding Photo 1" />
+    <img src="w2.jpg" alt="Wedding Photo 2" />
+    <img src="w3.jpg" alt="Wedding Photo 3" />
+    <img src="wedding1.jpg" alt="Wedding Photo 4" />
+    <img src="wedding2.jpg" alt="Wedding Photo 5" />
+    <img src="wedding3.jpg" alt="Wedding Photo 6" />
+    <img src="wedding4.jpg" alt="Wedding Photo 7" />
+    <img src="wedding5.jpg" alt="Wedding Photo 8" />
+    <img src="wedding6.jpg" alt="Wedding Photo 9" />
+  </div>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="closeBtn" aria-label="Close">&#10005;</button>
+    <button class="lightbox-nav prev-btn" id="prevBtn" aria-label="Previous">&#10094;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Full Wedding Photo" />
+    <button class="lightbox-nav next-btn" id="nextBtn" aria-label="Next">&#10095;</button>
+  </div>
+
+  <script>
+    const images = Array.from(document.querySelectorAll('.gallery-grid img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      currentIndex = (index + images.length) % images.length; // wrap around
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+      lightbox.classList.add('active');
+    }
+
+    images.forEach((img, idx) => {
+      img.addEventListener('click', () => {
+        showImage(idx);
+      });
+    });
+
+    closeBtn.onclick = hideLightbox;
+    function hideLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+
+    prevBtn.onclick = (e) => {
+      e.stopPropagation();
+      showImage(currentIndex - 1);
+    };
+    nextBtn.onclick = (e) => {
+      e.stopPropagation();
+      showImage(currentIndex + 1);
+    };
+
+    // Close by clicking overlay (not image)
+    lightbox.onclick = (e) => {
+      if (e.target === lightbox) hideLightbox();
+    };
+
+    // Optional: arrow keys navigation
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') hideLightbox();
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    });
+  </script>
+</body>
+</html>
