@@ -4,59 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Airavata Photography</title>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+    
+    /* Updated Header Styles */
     header { 
-      background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95)); 
-      backdrop-filter: blur(10px); 
-      padding: 20px 40px 20px 110px; /* Add left-padding for logo overlay on banner */
-      position: fixed; width: 100%; top: 0; z-index: 1000; 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+      background: transparent;
+      backdrop-filter: blur(10px);
+      padding: 20px 40px; 
+      position: fixed; 
+      width: 100%; 
+      top: 0; 
+      z-index: 1000; 
+      transition: background 0.3s ease;
       animation: slideDown 0.6s ease-out; 
-      display: flex; justify-content: flex-end;
+    }
+    header.scrolled {
+      background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.95));
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .header-content { display: flex; justify-content: flex-end; align-items: center; max-width: 1400px; width: 100%; margin: 0 auto; }
+    
+    .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+    .logo-title-wrapper { display: flex; align-items: center; gap: 15px; }
+    .logo-title-wrapper img { height: 55px; border-radius: 50%; border: 3px solid #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); transition: transform 0.3s ease; }
+    .logo-title-wrapper img:hover { transform: scale(1.1) rotate(5deg); }
+    .logo-title-wrapper h2 { font-size: 24px; background: linear-gradient(135deg, #d4af37, #f4e4b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: 1px; }
     nav { display: flex; gap: 35px; }
     nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; position: relative; transition: color 0.3s ease; padding: 5px 0; }
     nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #d4af37, #f4e4b0); transition: width 0.3s ease; }
     nav a:hover { color: #d4af37; }
     nav a:hover::after { width: 100%; }
 
-    /* Floating circular logo overlay */
-    .logo-overlay {
-      position: absolute;
-      top: 38px;
-      left: 48px;
-      z-index: 1020;
-      width: 82px;
-      height: 82px;
-      background: none;
-      border-radius: 50%;
-      box-shadow: 0 0 25px rgba(212,175,55,0.34);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-    }
-    .logo-overlay img {
-      width: 82px; height: 82px; border-radius: 50%;
-      display: block;
-      border: 3px solid #d4af37;
-      background: transparent;
-      transition: transform 0.3s;
-      box-shadow: 0 0 24px rgba(212, 175, 55, 0.16);
-    }
-    .logo-overlay img:hover {
-      transform: scale(1.08) rotate(7deg);
-    }
-
     /* Banner/Slider Styles */
     .banner-image-section {
       position: relative;
-      margin-top: 95px;
-      min-height: 85vh;
+      margin-top: 0;
+      min-height: 100vh;
       width: 100vw;
       display: flex;
       align-items: center;
@@ -115,7 +101,7 @@
       z-index: 3;
       margin: 0;
     }
-
+  
     .book-btn {
       background: linear-gradient(135deg, #d4af37, #f4e4b0);
       color: #000;
@@ -134,6 +120,7 @@
       z-index: 3;
       pointer-events: auto;
     }
+
     .book-btn:hover {
       transform: translateY(-5px) scale(1.05);
       box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
@@ -165,7 +152,7 @@
       box-shadow: 0 2px 6px rgba(212,175,55,0.28);
     }
 
-    /* Welcome Section, Footer, WhatsApp, Responsive ... (unchanged) */
+    /* Welcome Section */
     .welcome-section {
       padding: 100px 40px;
       background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
@@ -245,6 +232,7 @@
       line-height: 1.6;
     }
 
+    /* Footer */
     footer {
       background: linear-gradient(135deg, #0a0a0a, #000);
       text-align: center;
@@ -255,6 +243,8 @@
       opacity: 0.7;
       font-size: 16px;
     }
+
+    /* WhatsApp Floating Button */
     .whatsapp_float {
       position: fixed;
       width: 60px;
@@ -270,31 +260,52 @@
       z-index: 100;
       transition: transform 0.3s ease;
     }
-    .whatsapp_float:hover { transform: scale(1.1); }
-    .whatsapp-icon { margin-top: 13px; }
+    .whatsapp_float:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-icon {
+      margin-top: 13px;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      header { padding: 15px 15px 15px 64px; }
-      .logo-overlay { top: 24px; left: 10px; width: 54px; height: 54px; }
-      .logo-overlay img { width: 54px; height: 54px; }
-      .header-content { flex-direction: column; gap: 20px; }
-      nav { gap: 20px; }
-      .banner-overlay h1 { font-size: 28px; }
-      .welcome-section h2 { font-size: 36px; }
-      .services-preview { grid-template-columns: 1fr; padding: 0 20px; }
-      .slider-image, .slider { height: 330px !important; min-height: 270px !important; }
-      .slider-dots { bottom: 15px; }
+      .header-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      nav {
+        gap: 20px;
+      }
+      .banner-overlay h1 {
+        font-size: 42px;
+      }
+      .welcome-section h2 {
+        font-size: 36px;
+      }
+      .services-preview {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+      .slider-image, .slider {
+        height: 330px !important;
+        min-height: 270px !important;
+      }
+      .slider-dots {
+        bottom: 15px;
+      }
     }
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <!-- Logo overlay over the banner, not inside header -->
-  <div class="logo-overlay">
-    <img src="airavata_banner_transparent.png" alt="Airavata Photography Logo" />
-  </div>
   <header>
     <div class="header-content">
+      <div class="logo-title-wrapper">
+        <img src="logo.jpg" alt="Airavata Photography Logo" />
+        <h2>Airavata Photography</h2>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
@@ -302,16 +313,20 @@
       </nav>
     </div>
   </header>
+
   <section class="banner-image-section">
     <div class="slider">
       <img src="Slider1.jpg" class="slider-image active" alt="Professional Photography 1" />
       <img src="Slider2.jpg" class="slider-image" alt="Professional Photography 2" />
       <img src="Slider3.jpg" class="slider-image" alt="Professional Photography 3" />
-      <img src="Slider4.jpg" class="slider-image" alt="Professional Photography 4" />
+       <img src="Slider4.jpg" class="slider-image" alt="Professional Photography 4" />
     </div>
     <div class="banner-overlay">
       <h1>Capturing Memories</h1>
-      <br><br><br><br>
+     <br>                    </br>
+     <br>                    </br>
+     <br>                    </br>
+     <br>                    </br>
       <a href="services.html" class="book-btn">
         <span>📸</span> Book Your Session
       </a>
@@ -320,81 +335,96 @@
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
-      <span class="dot"></span>
     </div>
   </section>
-  <section class="welcome-section">
-      <h2>Welcome to Airavata Photography</h2>
-      <p>
-        Airavata Photography is a dedicated professional studio committed to delivering exceptional visual content. 
-        We specialize in wedding, portrait, and commercial photography, cinematography focusing on technical excellence, 
-        artistic composition, and meticulous attention to detail.
-      </p>
-      <div class="services-preview">
-        <div class="service-card">
-          <div class="service-icon">💍</div>
-          <h3>Wedding Photography</h3>
-          <p>Capturing the emotion and moments</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">😎</div>
-          <h3>Model Shoot</h3>
-          <p>Professional Model Photography Services</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">👩‍🦲</div>
-          <h3>Toddler</h3>
-          <p>High Energy and Unpredictable Movement</p>
-        </div>
+<section class="welcome-section">
+    <h2>Welcome to Airavata Photography</h2>
+    <p>
+      Airavata Photography is a dedicated professional studio committed to delivering exceptional visual  content. 
+      We specialize in wedding,portrait,and commercial photography,Cinematography focusing on technical excellence, 
+      artistic composition, and meticulous attention to detail.
+    </p>
+    <div class="services-preview">
+      <div class="service-card">
+        <div class="service-icon">💍</div>
+        <h3>Wedding Photography</h3>
+        <p>capturing the emotion and moments </p>
       </div>
-    </section>
-    <footer>
-      <p>&copy; 2025 Airavata Photography | All Rights Reserved</p>
-    </footer>
-    <a href="https://wa.me/919133203627"
-      class="whatsapp_float"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Chat on WhatsApp">
-      <i class="fa fa-whatsapp whatsapp-icon"></i>
-    </a>
-    <script>
-      const slides = document.querySelectorAll('.slider-image');
-      const dots = document.querySelectorAll('.dot');
-      const totalSlides = slides.length;
-      let currentSlide = 0;
-      let interval;
+      <div class="service-card">
+        <div class="service-icon">😎</div>
+        <h3>Model Shoot</h3>
+        <p>Professional Model Photography Services</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👩‍🦲</div>
+        <h3>Toddler</h3
+         <p>High Energy and Unpredictable Movement</p>
+      </div>
+    </div>
+  </section>
 
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === index);
-        });
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === index);
-        });
-      }
+  <footer>
+    <p>&copy; 2025 Airavata Photography | All Rights Reserved</p>
+  </footer>
 
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide(currentSlide);
-      }
+  <a href="https://wa.me/919133203627"
+   class="whatsapp_float"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Chat on WhatsApp">
+   <i class="fa fa-whatsapp whatsapp-icon"></i>
+  </a>
 
-      function startSlider() {
-        interval = setInterval(nextSlide, 4000);
-      }
+  <script>
+    const slides = document.querySelectorAll('.slider-image');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let interval;
 
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-          clearInterval(interval);
-          currentSlide = i;
-          showSlide(currentSlide);
-          startSlider();
-        });
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
       });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
 
-      // Initialize slider
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
       showSlide(currentSlide);
-      startSlider();
-    </script>
-  </body>
+    }
+
+    function startSlider() {
+      interval = setInterval(nextSlide, 4000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(interval);
+        currentSlide = i;
+        showSlide(currentSlide);
+        startSlider();
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      const bannerSection = document.querySelector('.banner-image-section');
+      const bannerHeight = bannerSection.offsetHeight;
+      
+      if (window.scrollY > bannerHeight * 0.7) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Initialize slider
+    showSlide(currentSlide);
+    startSlider();
+  </script>
+</body>
 </html>
