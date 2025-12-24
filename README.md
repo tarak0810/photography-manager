@@ -1,1 +1,1 @@
-# photography-manager
+# airavata-Photography
